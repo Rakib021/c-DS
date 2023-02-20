@@ -47,6 +47,22 @@ class LinkedList{
         cout<<"\n";
 
     }
+
+    int searchDistinctValue(int value){
+        node *a= head;
+        int index=0;
+
+        while(a!=NULL){
+            if(a->data==value){
+                return index;
+            }
+
+            a=a->nxt;
+            index++;
+
+        }
+        return -1;
+    }
 };
 int main(){
     LinkedList l;
@@ -66,5 +82,8 @@ int main(){
 
     l.insertAtHead(60);
     l.Traverse();
+
+    cout<<"10 is found at "<<l.searchDistinctValue(10)<<"\n";
+    cout<<"100 is found at "<<l.searchDistinctValue(100)<<"\n";
 
 }
