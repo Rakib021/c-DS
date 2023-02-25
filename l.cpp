@@ -147,22 +147,22 @@ public:
         delete a;
     }
 
-    // Delete the value at the given index
+     //Delete the value at the given index
     void DeleteAnyIndex(int index)
     {
-        if (index < 0 || index > sz - 1)
+        if(index <0 || index > sz-1)
         {
             return;
         }
-        if (index == 0)
+        if(index==0)
         {
             DeleteAtHead();
             return;
         }
         sz--;
         node *a = head;
-        int cur_index = 0;
-        while (cur_index != index - 1)
+        int cur_index = 0 ;
+        while(cur_index != index-1)
         {
             a = a->nxt;
             cur_index++;
@@ -170,46 +170,6 @@ public:
         node *b = a->nxt;
         a->nxt = b->nxt;
         delete b;
-    }
-
-    void insertAfterValue(int value, int data)
-    {
-        node *a = head;
-        while (a != NULL)
-        {
-            if (a->data == value)
-            {
-                break;
-            }
-
-            a = a->nxt;
-        }
-
-        if (a == NULL)
-        {
-            cout << value << "doesn't exits \n";
-            return;
-        }
-        node *newnode = createNewNode(data);
-        newnode->nxt = a->nxt;
-        a->nxt = newnode;
-    }
-
-    void ReversePrint2(node *a)
-    {
-        if (a == NULL)
-        {
-            return;
-        }
-
-        ReversePrint2(a->nxt);
-        cout << a->data << " ";
-    }
-
-    void ReversePrint()
-    {
-        ReversePrint2(head);
-        cout << "\n";
     }
 };
 
@@ -220,22 +180,16 @@ int main()
     l.insertAtHead(5);
     l.insertAtHead(12);
     l.insertAtHead(70);
-    l.insertAtHead(45);
-    l.insertAtHead(21);
-    l.insertAtHead(1);
+
     l.Traverse();
 
-    l.ReversePrint();
+    l.insertAtAnyIndex(2, 100);
+    l.Traverse();
+    cout << l.getSize() << "\n";
 
-    // l.insertAfterValue(12 , 100);
-    // l.Traverse();
-    // l.insertAtAnyIndex(2, 100);
-    // l.Traverse();
-    // cout << l.getSize() << "\n";
-
-    // l.DeleteAtHead();
-    // l.Traverse();
-    // cout << l.getSize() << "\n";
+    l.DeleteAtHead();
+    l.Traverse();
+    cout << l.getSize() << "\n";
 
     //     l.Traverse();
 
